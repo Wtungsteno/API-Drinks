@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03 - ModelsWebAPILoGiud", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05 - RepoImplWebAPILoGiud", "RepoImplementationWebAPILoGiud\05 - RepoImplWebAPILoGiud.csproj", "{60B9E65B-E492-4F3A-A850-3E77823146FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04 - ReposAbstrWebAPILoGiud", "ReposAbstrWebAPILoGiud\04 - ReposAbstrWebAPILoGiud.csproj", "{ABEF636A-E14D-4746-AF0C-83CD38412A9F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04 - RepoAbstrWebAPILoGiud", "ReposAbstrWebAPILoGiud\04 - RepoAbstrWebAPILoGiud.csproj", "{ABEF636A-E14D-4746-AF0C-83CD38412A9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
