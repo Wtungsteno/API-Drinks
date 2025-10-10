@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ModelsWebAPILoGiud\03 - ModelsWebAPILoGiud.csproj" />
+    <ProjectReference Include="..\ReposAbstrWebAPILoGiud\D_RepoAbstrWebAPILoGiud.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,3 +1,6 @@
+using B_BusinessLogicWebAPILoGiud;
+using D_RepoAbstrWebAPILoGiud;
+using E_RepoImplWebAPILoGiud;
 using Microsoft.EntityFrameworkCore;
 using WebAPILoGiud;
 
@@ -10,10 +13,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-string? connStr = builder.Configuration.GetConnectionString("Default");
-builder.Services.AddDbContext<DrinkDbContext>(options => options.UseSqlServer(connStr));
+string? connStr = builder.Configuration.GetConnectionString("Database:ConnectionStrings:Default:");
+builder.Services
+    .AddDbContext<DrinkDbContext>(opt => opt.UseSqlServer(connStr))
+    .AddScoped<IAppRepository, AppRepository>()
+    .AddScoped<IDrinkService, DrinkService>();
 
-builder.Services.AddSingleton<Mapper>();
+//builder.Services.AddSingleton<Mapper>();
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(config =>
 {
@@ -31,11 +37,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.UseCors();
-
 app.Run();

@@ -12,8 +12,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogicWebAPILoGiud\02 - BusinessLogicWebAPILoGiud.csproj" />
+    <ProjectReference Include="..\BusinessLogicWebAPILoGiud\02-BusinessLogicWebAPILoGiud.csproj" />
+    <ProjectReference Include="..\BusinessLogicWebAPILoGiud\B_BusinessLogicWebAPILoGiud.csproj" />
     <ProjectReference Include="..\ModelsWebAPILoGiud\03 - ModelsWebAPILoGiud.csproj" />
     <ProjectReference Include="..\RepoImplementationWebAPILoGiud\05 - RepoImplWebAPILoGiud.csproj" />
+    <ProjectReference Include="..\RepoImplementationWebAPILoGiud\E_RepoImplWebAPILoGiud.csproj" />
   </ItemGroup>
 
 </Project>

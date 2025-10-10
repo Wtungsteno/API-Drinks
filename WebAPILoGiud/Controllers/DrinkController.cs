@@ -23,27 +23,27 @@ namespace WebAPILoGiud.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Drink()
+        public async Task<IActionResult> GetAll()
         {
             List<Drink>? records = await _ctx.Drinks.ToListAsync();
-            List<DrinkDTO> converted = records.ConvertAll(_mapper.MapDrinkToGetDTO);
+            List<DrinkDto> converted = records.ConvertAll(_mapper.MapGetEntityToDto);
             return Ok(converted);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Drink(int id, CancellationToken ct)
+        public async Task<IActionResult> GetById(int id, CancellationToken ct)
         {
             Drink? found = await _ctx.Drinks.SingleOrDefaultAsync(d => d.Id == id);
             if (found == null)
             {
                 return NotFound(id);
             }
-            DrinkDTO converted = _mapper.MapDrinkToGetDTO(found);
+            DrinkDTO converted = _mapper.MapGetEntityToDto(found);
             return Ok(converted);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Drink(DrinkIdLessDTO drinkDto)
+        public async Task<IActionResult> Create(DrinkIdLessDTO drinkDto)
         {
             Drink newDrink = _mapper.MapPostDTOToDrink(drinkDto);
             await _ctx.Drinks.AddAsync(newDrink);
@@ -52,7 +52,7 @@ namespace WebAPILoGiud.Controllers
         }
 
         [HttpPatch("{id}")]
-        public async Task<IActionResult> Drink(DrinkIdLessDTO drinkDto, int id)
+        public async Task<IActionResult> Update(DrinkIdLessDTO drinkDto, int id)
         {
             Drink? found = await _ctx.Drinks.SingleOrDefaultAsync(d => d.Id == id);
             if (found == null)
@@ -66,7 +66,7 @@ namespace WebAPILoGiud.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Drink(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             Drink? found = await _ctx.Drinks.SingleOrDefaultAsync(d => d.Id == id);
             if (found == null)

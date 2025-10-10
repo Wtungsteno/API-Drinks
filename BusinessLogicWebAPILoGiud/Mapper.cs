@@ -1,13 +1,14 @@
-﻿using WebAPILoGiud.Data;
+﻿using B_BusinessLogicWebAPILoGiud;
+using WebAPILoGiud.Data;
 using WebAPILoGiud.DTO;
 
 namespace WebAPILoGiud
 {
-    public class Mapper
+    public class Mapper : IMapper
     {
-        public DrinkDTO MapDrinkToGetDTO(Drink entity)
+        public DrinkDto MapGetEntityToDto(Drink entity)
         {
-            return new DrinkDTO()
+            return new DrinkDto()
             {
                 Id = entity.Id,
                 Name = entity.Name,
@@ -16,7 +17,7 @@ namespace WebAPILoGiud
             };
         }
 
-        public Drink MapPostDTOToDrink(DrinkIdLessDTO dto)
+        public Drink MapPostDtoToEntity(DrinkIdLessDto dto)
         {
             return new Drink()
             {
@@ -27,7 +28,7 @@ namespace WebAPILoGiud
             };
         }
 
-        public void MapUpdateDTOToDrink(Drink entity, DrinkIdLessDTO dto)
+        public void MapUpdateDtoToEntity(Drink entity, DrinkIdLessDto dto)
         {
             entity.Name = dto.Name;
             entity.Size = dto.Size;

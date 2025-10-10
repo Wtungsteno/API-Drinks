@@ -3,15 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36511.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01 - WebAPILoGiud", "WebAPILoGiud\01 - WebAPILoGiud.csproj", "{A8A4CB66-75BE-D947-58DF-5668466D07B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A_WebAPILoGiud", "WebAPILoGiud\A_WebAPILoGiud.csproj", "{A8A4CB66-75BE-D947-58DF-5668466D07B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02 - BusinessLogicWebAPILoGiud", "BusinessLogicWebAPILoGiud\02 - BusinessLogicWebAPILoGiud.csproj", "{8358C0E1-544C-18BD-B466-6E8EF7E0842D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B_BusinessLogicWebAPILoGiud", "BusinessLogicWebAPILoGiud\B_BusinessLogicWebAPILoGiud.csproj", "{8358C0E1-544C-18BD-B466-6E8EF7E0842D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03 - ModelsWebAPILoGiud", "ModelsWebAPILoGiud\03 - ModelsWebAPILoGiud.csproj", "{D0DB8696-D738-41CE-B62E-AC04D13C37C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C_ModelsWebAPILoGiud", "ModelsWebAPILoGiud\C_ModelsWebAPILoGiud.csproj", "{D0DB8696-D738-41CE-B62E-AC04D13C37C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05 - RepoImplWebAPILoGiud", "RepoImplementationWebAPILoGiud\05 - RepoImplWebAPILoGiud.csproj", "{60B9E65B-E492-4F3A-A850-3E77823146FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E_RepoImplWebAPILoGiud", "RepoImplementationWebAPILoGiud\E_RepoImplWebAPILoGiud.csproj", "{60B9E65B-E492-4F3A-A850-3E77823146FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04 - RepoAbstrWebAPILoGiud", "ReposAbstrWebAPILoGiud\04 - RepoAbstrWebAPILoGiud.csproj", "{ABEF636A-E14D-4746-AF0C-83CD38412A9F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D_RepoAbstrWebAPILoGiud", "ReposAbstrWebAPILoGiud\D_RepoAbstrWebAPILoGiud.csproj", "{ABEF636A-E14D-4746-AF0C-83CD38412A9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestAPI", "UnitTestAPI\UnitTestAPI.csproj", "{1732B2DB-EE00-4204-914C-B44039FB6E1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F_MigrationsWebAPILoGiud", "F_MigrationsWebAPILoGiud\F_MigrationsWebAPILoGiud.csproj", "{96D07EB2-C1A2-40CC-9CBE-D142C637044E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +45,20 @@ Global
 		{ABEF636A-E14D-4746-AF0C-83CD38412A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABEF636A-E14D-4746-AF0C-83CD38412A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABEF636A-E14D-4746-AF0C-83CD38412A9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1732B2DB-EE00-4204-914C-B44039FB6E1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1732B2DB-EE00-4204-914C-B44039FB6E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1732B2DB-EE00-4204-914C-B44039FB6E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1732B2DB-EE00-4204-914C-B44039FB6E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96D07EB2-C1A2-40CC-9CBE-D142C637044E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96D07EB2-C1A2-40CC-9CBE-D142C637044E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96D07EB2-C1A2-40CC-9CBE-D142C637044E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96D07EB2-C1A2-40CC-9CBE-D142C637044E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1732B2DB-EE00-4204-914C-B44039FB6E1C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7A524B28-337E-4F24-A383-CE5D3AF62F14}

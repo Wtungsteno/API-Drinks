@@ -1,6 +1,6 @@
 ﻿namespace WebAPILoGiud.DTO
 {
-    public class DrinkDTO
+    public class DrinkDto
     {
         public required int Id { get; set; }
         public required string Name { get; set; }
