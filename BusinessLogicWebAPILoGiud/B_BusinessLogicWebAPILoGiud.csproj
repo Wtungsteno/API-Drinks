@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Linq.Async" Version="6.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ModelsWebAPILoGiud\03 - ModelsWebAPILoGiud.csproj" />
     <ProjectReference Include="..\ReposAbstrWebAPILoGiud\D_RepoAbstrWebAPILoGiud.csproj" />
   </ItemGroup>

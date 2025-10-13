@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using B_BusinessLogicWebAPILoGiud;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPILoGiud.Data;
@@ -9,37 +10,23 @@ namespace WebAPILoGiud.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors]
-    public class DrinkController : ControllerBase
+    public class DrinkController(IDrinkService svc) : ControllerBase
     {
-        private readonly DrinkDbContext _ctx;
-        private readonly Mapper _mapper;
-        private readonly ILogger<DrinkDbContext> _logger;
-
-        public DrinkController(DrinkDbContext ctx, Mapper mapper, ILogger<DrinkDbContext> logger)
-        {
-            _ctx = ctx;
-            _mapper = mapper;
-            _logger = logger;
-        }
-
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            List<Drink>? records = await _ctx.Drinks.ToListAsync();
-            List<DrinkDto> converted = records.ConvertAll(_mapper.MapGetEntityToDto);
-            return Ok(converted);
+            return Ok(await svc.GetAll().ToListAsync(HttpContext.RequestAborted));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id, CancellationToken ct)
         {
-            Drink? found = await _ctx.Drinks.SingleOrDefaultAsync(d => d.Id == id);
+            DrinkDto? found = await svc.GetByIdAsync(id, HttpContext.RequestAborted);
             if (found == null)
             {
-                return NotFound(id);
+                return NotFound($"Drink with id {id} not found.");
             }
-            DrinkDTO converted = _mapper.MapGetEntityToDto(found);
-            return Ok(converted);
+            return Ok(found);
         }
 
         [HttpPost]
