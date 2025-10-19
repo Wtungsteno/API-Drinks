@@ -30,39 +30,31 @@ namespace WebAPILoGiud.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(DrinkIdLessDTO drinkDto)
+        public async Task<IActionResult> Create([FromBody] DrinkIdLessDto newDrink)
         {
-            Drink newDrink = _mapper.MapPostDTOToDrink(drinkDto);
-            await _ctx.Drinks.AddAsync(newDrink);
-            await _ctx.SaveChangesAsync();
-            return Created($"{HttpContext.Request.Path}/{newDrink.Id}", newDrink);
+            DrinkDto createdDrink = await svc.CreateAsync(newDrink, HttpContext.RequestAborted);
+            return CreatedAtAction(nameof(GetById), createdDrink.Id, createdDrink);
         }
 
         [HttpPatch("{id}")]
-        public async Task<IActionResult> Update(DrinkIdLessDTO drinkDto, int id)
+        public async Task<IActionResult> Update(int id, [FromBody] DrinkIdLessDto updateDrink)
         {
-            Drink? found = await _ctx.Drinks.SingleOrDefaultAsync(d => d.Id == id);
-            if (found == null)
+            bool found = await svc.UpdateAsync(id, updateDrink, HttpContext.RequestAborted);
+            if (!found)
             {
-                _logger.LogWarning($"Drink with id {id} not found.");
-                return NotFound(id);
+                return NotFound();
             }
-            _mapper.MapUpdateDTOToDrink(found, drinkDto);
-            await _ctx.SaveChangesAsync();
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            Drink? found = await _ctx.Drinks.SingleOrDefaultAsync(d => d.Id == id);
-            if (found == null)
+            bool found = await svc.DeleteAsync(id, HttpContext.RequestAborted);
+            if (!found)
             {
-                _logger.LogWarning($"Drink with id {id} not found.");
-                return NotFound(id);
+                return NotFound();
             }
-            _ctx.Drinks.Remove(found);
-            await _ctx.SaveChangesAsync();
             return NoContent();
         }
     }
