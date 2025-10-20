@@ -22,7 +22,7 @@ namespace WebAPILoGiud.Controllers
         public async Task<IActionResult> GetById(int id, CancellationToken ct)
         {
             DrinkDto? found = await svc.GetByIdAsync(id, HttpContext.RequestAborted);
-            if (found == null)
+            if (found is null)
             {
                 return NotFound($"Drink with id {id} not found.");
             }

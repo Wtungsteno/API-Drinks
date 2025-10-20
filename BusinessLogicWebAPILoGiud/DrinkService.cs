@@ -1,10 +1,11 @@
 ﻿using D_RepoAbstrWebAPILoGiud;
+using ITS.Day2.BL;
 using WebAPILoGiud.Data;
 using WebAPILoGiud.DTO;
 
 namespace B_BusinessLogicWebAPILoGiud
 {
-    public class DrinkService(IAppRepository repo, IMapper mapper) : IDrinkService
+    public class DrinkService(IAppRepository repo, IMapper mapper, IHttpClientFactory httpClientFactory) : IDrinkService
     {
         public IAsyncEnumerable<DrinkDto> GetAll()
         {
@@ -32,7 +33,7 @@ namespace B_BusinessLogicWebAPILoGiud
         public async Task<bool> UpdateAsync(int id, DrinkIdLessDto dto, CancellationToken cancToken = default)
         {
             Drink? found = await repo.GetByIdAsync(id, cancToken);
-            if (found == null)
+            if (found is null)
             {
                 return false;
             }
@@ -44,13 +45,24 @@ namespace B_BusinessLogicWebAPILoGiud
         public async Task<bool> DeleteAsync(int id, CancellationToken cancToken = default)
         {
             Drink? found = await repo.GetByIdAsync(id, cancToken);
-            if(found == null)
+            if(found is null)
             {
                 return false;
             }
             repo.Delete(found);
             await repo.SaveAsync(cancToken);
             return true;
+        }
+
+        public async Task TestExternalApi(CancellationToken cancToken)
+        {
+            HttpClient client = httpClientFactory.CreateClient("ExternalApi");
+            using HttpResponseMessage response = await client.GetAsync("https://webhook.site/6f7616cd-b9b5-4120-aff9-425773f52142", cancToken);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw SolutionLogging.ExternalApiError.ToException(await response.Content.ReadAsStringAsync(cancToken));
+            }
         }
     }
 }
